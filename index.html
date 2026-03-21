@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSCA-CPT 一発合格の教科書｜本番対応型問題集 450問</title>
+<meta name="description" content="NSCA-CPT合格者が作った本番対応型問題集。全カテゴリ450問＋全問解説で最短合格を目指す。">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-light: #243556;
+    --navy-dark: #0f1a2e;
+    --accent: #e8a838;
+    --accent-hover: #d4952e;
+    --accent-light: #fdf3e0;
+    --gray-50: #f8f9fb;
+    --gray-100: #eef0f4;
+    --gray-200: #d8dce4;
+    --gray-600: #5a6375;
+    --gray-800: #2d3340;
+    --white: #ffffff;
+    --red: #d94040;
+    --green: #2a8c5a;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.8;
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== UTILITY ===== */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 72px 0; }
+  .section-alt { background: var(--gray-50); }
+  .section-dark { background: var(--navy); color: var(--white); }
+  .section-dark p, .section-dark li { color: rgba(255,255,255,0.85); }
+
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+  .section-title .em { color: var(--accent); }
+  .section-dark .section-title { color: var(--white); }
+
+  .lead-arrow {
+    display: block;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 20px;
+  }
+  .section-dark .lead-arrow { color: var(--accent); }
+
+  /* ===== CTA BUTTON ===== */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    background: var(--accent);
+    color: var(--navy-dark);
+    font-size: 1.15rem;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(232,168,56,0.35);
+  }
+  .cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(232,168,56,0.45); }
+  .cta-btn-sub { display: block; font-size: 0.8rem; font-weight: 500; margin-top: 4px; opacity: 0.75; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(170deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 80px 0 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(232,168,56,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero .container { position: relative; z-index: 1; }
+
+  .hero-label {
+    display: inline-block;
+    background: rgba(232,168,56,0.15);
+    border: 1px solid rgba(232,168,56,0.4);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 40px;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+  }
+  .hero h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+  .hero h1 .highlight {
+    color: var(--accent);
+    display: inline;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .hero-feature {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-feature span { color: var(--accent); }
+
+  .hero-price {
+    margin-bottom: 32px;
+  }
+  .hero-price .original {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    margin-right: 12px;
+  }
+  .hero-price .current {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent);
+  }
+  .hero-price .tax {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-left: 4px;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* ===== PAIN POINTS ===== */
+  .pain-list {
+    list-style: none;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .pain-list li {
+    position: relative;
+    padding: 14px 0 14px 36px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .pain-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: var(--red);
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+  .pain-bottom {
+    text-align: center;
+    margin-top: 36px;
+    padding: 20px 24px;
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+  }
+
+  /* ===== PROBLEM ESSENCE ===== */
+  .essence-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .essence-box h3 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .essence-points {
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  .essence-points li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 24px;
+  }
+  .essence-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .essence-points li { color: var(--gray-800); }
+
+  /* ===== LOSS TRIGGER ===== */
+  .loss-card {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+    border: 2px solid #f5d0d0;
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .loss-card .warning-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  .loss-card h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+  .loss-items {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  .loss-items li {
+    padding: 6px 0;
+    font-size: 0.95rem;
+    color: var(--gray-600);
+  }
+  .loss-items li strong { color: var(--gray-800); }
+
+  /* ===== BENEFITS ===== */
+  .benefit-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin-bottom: 24px;
+    border: 1px solid var(--gray-100);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .benefit-card .card-label {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+  .benefit-card h3 {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .benefit-card p {
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    line-height: 1.75;
+  }
+  .benefit-card .card-arrow {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* ===== FUTURE ===== */
+  .future-list {
+    list-style: none;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .future-list li {
+    padding: 12px 0 12px 36px;
+    position: relative;
+    font-size: 1rem;
+  }
+  .future-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: var(--green);
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+  .future-highlight {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--accent);
+    padding: 20px 0;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .testimonial {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid var(--gray-100);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+  .testimonial .stars {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .testimonial p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .testimonial .author {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing-box {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .pricing-compare {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+  }
+  .pricing-box .product-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .pricing-box .product-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+  }
+  .pricing-box .price-row {
+    margin-bottom: 24px;
+  }
+  .pricing-box .old-price {
+    font-size: 1.1rem;
+    color: var(--gray-200);
+    text-decoration: line-through;
+    margin-right: 8px;
+  }
+  .pricing-box .new-price {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .pricing-box .tax { font-size: 0.8rem; color: var(--gray-600); }
+  .pricing-box .savings {
+    display: inline-block;
+    background: #fef2f2;
+    color: var(--red);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .pricing-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+  .pricing-features li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    position: relative;
+    padding-left: 24px;
+    border-bottom: 1px solid var(--gray-50);
+  }
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ===== URGENCY ===== */
+  .urgency-banner {
+    background: linear-gradient(135deg, var(--accent-light) 0%, #fff 100%);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 48px;
+  }
+  .urgency-banner .timer-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+  .urgency-banner p { font-size: 0.92rem; color: var(--gray-800); font-weight: 500; }
+  .urgency-banner strong { color: var(--navy); }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    border-bottom: 1px solid var(--gray-100);
+    padding: 24px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 28px;
+  }
+  .faq-q::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    background: var(--navy);
+    color: var(--white);
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 900;
+  }
+  .faq-a {
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    padding-left: 28px;
+    line-height: 1.75;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing {
+    background: linear-gradient(170deg, var(--navy-dark) 0%, var(--navy) 100%);
+    color: var(--white);
+    padding: 72px 0;
+    text-align: center;
+  }
+  .closing h2 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .closing p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.75rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero { padding: 56px 0 48px; }
+    .hero h1 { font-size: 1.55rem; }
+    .hero-price .current { font-size: 1.8rem; }
+    .section { padding: 56px 0; }
+    .section-title { font-size: 1.35rem; margin-bottom: 36px; }
+    .container { padding: 0 18px; }
+    .benefit-card { padding: 24px 20px; }
+    .pricing-box { padding: 36px 24px; }
+    .pricing-box .new-price { font-size: 2.2rem; }
+    .cta-btn { font-size: 1.05rem; padding: 18px 24px; }
+  }
+
+  @media (min-width: 601px) {
+    .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-label">NSCA-CPT 対策問題集</span>
+    <h1>NSCA-CPTに<br><span class="highlight">"最短で合格したい人"</span>へ</h1>
+    <p class="hero-sub">合格者が作った、本番対応型問題集</p>
+    <p class="hero-feature"><span>全カテゴリ450問</span>＋全問解説付き</p>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; margin-bottom:28px;">テキスト学習だけでは身につかない<br>「選択肢を見抜く力」を鍛える</p>
+    <div class="hero-price">
+      <span class="hero-badge">今だけ特別価格</span><br>
+      <span class="original">¥4,980</span>
+      <span class="current">¥2,980</span>
+      <span class="tax">（税込）</span>
+    </div>
+    <a href="https://note.com/nsca_supports/n/n2424be115a14" class="cta-btn">
+      今すぐ問題集を手に入れる
+      <span class="cta-btn-sub">noteで購入・即ダウンロード</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="section fade-in">
+  <div class="container">
+    <h2 class="section-title">こんな状態になっていませんか？</h2>
+    <ul class="pain-list">
+      <li>テキストは読んでいるが、どこが出るのかわからない</li>
+      <li>問題演習ができる教材が少ない</li>
+      <li>選択肢の「なぜ間違いか」が理解できない</li>
+      <li>独学でこのまま合格できるか不安</li>
+      <li>一度落ちて、何を変えればいいかわからない</li>
+    </ul>
+    <div class="pain-bottom">
+      これは"努力不足"ではありません。<br>原因は別にあります。
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ESSENCE ===== -->
+<section class="section section-dark fade-in">
+  <div class="container">
+    <h2 class="section-title">原因は<span class="em">「実践演習不足」</span>です</h2>
+    <div class="essence-box">
+      <h3>NSCA-CPTは暗記試験ではなく<br>"選択力の試験"</h3>
+      <ul class="essence-points">
+        <li>正解っぽい選択肢が複数ある</li>
+        <li>微妙な違いを見抜く必要がある</li>
+        <li>知識を"使う力"が求められる</li>
+      </ul>
+      <span class="lead-arrow" style="color:var(--navy);">つまり──問題を解かない限り、絶対に伸びません</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOSS TRIGGER ===== -->
+<section class="section fade-in">
+  <div class="container">
+    <div class="loss-card">
+      <div class="warning-icon">⚠️</div>
+      <h3>NSCA-CPT 受験費用は約4万円</h3>
+      <p style="font-size:0.95rem; color:var(--gray-800); margin-bottom:20px;">不合格になると、すべて失います</p>
+      <ul class="loss-items">
+        <li><strong>再受験料</strong>──さらに数万円の出費</li>
+        <li><strong>再学習の時間</strong>──数ヶ月のやり直し</li>
+        <li><strong>モチベーション</strong>──低下は避けられない</li>
+      </ul>
+      <span class="lead-arrow">問題演習を軽視するほど、合格は遠のきます</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="section section-alt fade-in">
+  <div class="container">
+    <h2 class="section-title">そこで作ったのが<br>この<span class="em">問題集</span>です</h2>
+    <p style="text-align:center; color:var(--gray-600); margin-bottom:48px;">「本番で解ける力」を作るために設計しました</p>
+
+    <div class="benefit-card">
+      <span class="card-label">POINT 01</span>
+      <h3>全範囲を網羅──450問収録</h3>
+      <p>科学的基礎・評価・プログラムデザイン・技術の全カテゴリを収録。苦手分野だけを集中的に対策することも可能です。</p>
+      <span class="card-arrow">→ 弱点を残さず、全範囲を仕上げられる</span>
+    </div>
+
+    <div class="benefit-card">
+      <span class="card-label">POINT 02</span>
+      <h3>"不正解の理由"まで徹底解説</h3>
+      <p>なぜ正解か、だけではありません。なぜ間違いか──まで解説しています。両方を理解することで、初見問題にも対応できる力がつきます。</p>
+      <span class="card-arrow">→ ここが他の教材との最大の違い</span>
+    </div>
+
+    <div class="benefit-card">
+      <span class="card-label">POINT 03</span>
+      <h3>合格者視点の問題設計</h3>
+      <p>実際の受験経験をもとに作成。出題傾向を再現し、市販教材にはない視点を盛り込みました。試験で問われる思考プロセスをそのまま体験できます。</p>
+      <span class="card-arrow">→ 試験本番の思考力を鍛えられる</span>
+    </div>
+
+    <div class="benefit-card">
+      <span class="card-label">POINT 04</span>
+      <h3>スキマ時間にどこでも使える</h3>
+      <p>PDF形式なので、スマホ・PC・タブレットで閲覧可能。印刷して使うこともできます。通勤中や休憩時間を有効活用できます。</p>
+      <span class="card-arrow">→ いつでもどこでも学習が進む</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUTURE ===== -->
+<section class="section fade-in">
+  <div class="container">
+    <h2 class="section-title">この問題集を使うことで</h2>
+    <ul class="future-list">
+      <li>本番形式に慣れ、試験で戸惑わなくなる</li>
+      <li>解くスピードが上がり、時間に余裕が生まれる</li>
+      <li>自信を持って試験に臨める</li>
+    </ul>
+    <div class="future-highlight">
+      「これは受かる」──<br>そう思える状態で試験に向かえます
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section section-alt fade-in">
+  <div class="container">
+    <h2 class="section-title">購入者の声</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>解説が丁寧で「なぜ間違いか」まで分かる。他の教材にはない強みです。</p>
+        <span class="author">── 20代・トレーナー志望</span>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>テキストだけの限界を感じていたが、問題形式で一気に整理できた。</p>
+        <span class="author">── 30代・ジムスタッフ</span>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>通勤中にスマホで使えるのが便利。繰り返し使える量がある。</p>
+        <span class="author">── 20代・大学生</span>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>受験費用を考えたら安すぎる。不合格リスクを減らせた。</p>
+        <span class="author">── 30代・インストラクター</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section section-dark fade-in">
+  <div class="container">
+    <h2 class="section-title">価格について</h2>
+    <p class="pricing-compare">一般的なスクール：数万円〜10万円以上</p>
+    <div class="pricing-box">
+      <p class="product-name">NSCA-CPT 一発合格の教科書</p>
+      <p class="product-desc">全カテゴリ450問＋全問解説付き｜PDF形式</p>
+      <div class="price-row">
+        <span class="old-price">¥4,980</span>
+        <span class="new-price">¥2,980</span>
+        <span class="tax">（税込）</span>
+      </div>
+      <span class="savings">2,000円OFF ─ 初回特別価格</span>
+      <ul class="pricing-features">
+        <li>全4カテゴリ・450問収録</li>
+        <li>全問に詳細解説付き</li>
+        <li>不正解の理由まで解説</li>
+        <li>PDF形式・スマホ/PC/印刷対応</li>
+        <li>無期限アクセス・更新版も追加費用なし</li>
+      </ul>
+      <a href="https://note.com/nsca_supports/n/n2424be115a14" class="cta-btn">
+        今すぐ問題集を手に入れる
+        <span class="cta-btn-sub">noteで購入・即ダウンロード</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== URGENCY ===== -->
+<section class="section fade-in">
+  <div class="container">
+    <div class="urgency-banner">
+      <span class="timer-icon">⏳</span>
+      <p><strong>初回特別価格 ¥2,980</strong><br>今後価格改定予定。予告なく終了する可能性があります。<br><strong>今が最安です。</strong></p>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="faq-item">
+      <p class="faq-q">どのレベルから使えますか？</p>
+      <p class="faq-a">テキストを一通り読んだ方から使用できます。解説が詳しいので、理解を深めながら進められます。</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">試験形式に近いですか？</p>
+      <p class="faq-a">はい。4択形式で本番の出題形式を再現しています。</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">いつまで使えますか？</p>
+      <p class="faq-a">無期限です。更新版も追加費用なしでご利用いただけます。</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">スマホで使えますか？</p>
+      <p class="faq-a">はい。PDF形式なので、スマホ・PC・タブレットすべてで閲覧可能です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING CTA ===== -->
+<section class="closing">
+  <div class="container">
+    <h2>合格まで遠回りするか、<br>最短で進むか。</h2>
+    <p>
+      NSCA-CPTは、正しい対策をすれば受かる試験です。<br>
+      ただし、間違った努力を続ければ落ちます。<br><br>
+      この問題集は、あなたを<br>"合格ルート"に乗せるための教材です。
+    </p>
+    <a href="https://note.com/nsca_supports/n/n2424be115a14" class="cta-btn">
+      今すぐ問題集を手に入れる
+      <span class="cta-btn-sub">noteで購入・即ダウンロード</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>&copy; NSCA-CPT 合格サポート</p>
+</footer>
+
+<!-- ===== SCROLL ANIMATION ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+});
+</script>
+
+</body>
+</html>
